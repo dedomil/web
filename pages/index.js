@@ -6,17 +6,24 @@ export default function Home() {
     userId: "970197024928591882",
     socket: true,
   });
-  //   const [count, setCount] = useState(null);
-  const [music, setMusic] = useState({ success: false });
-  useEffect(() => {
-    let e = new EventSource("https://dedomil.alwaysdata.net");
+  const [count, setCount] = useState(1);
+  const [track, setTrack] = useState([]);
 
-    // change to connect
-    e.addEventListener("user-joined", ({ data }) => {
-      setMusic(JSON.parse(data));
+  useEffect(() => {
+    const e = new EventSource("https://sse.yadav.id");
+
+    e.addEventListener("connected", ({ data }) => {
+      const dataJson = JSON.parse(data);
+      setTrack(dataJson[0]);
+      setCount(dataJson[1]);
     });
+
     e.addEventListener("track-changed", ({ data }) => {
-      setMusic(JSON.parse(data));
+      setTrack(JSON.parse(data));
+    });
+
+    e.addEventListener("count-updated", ({ data }) => {
+      setCount(JSON.parse(data)[0]);
     });
   }, []);
   return (
@@ -136,22 +143,22 @@ export default function Home() {
       <hr></hr>
       <div className="flex flex-row justify-between">
         <div className="text-sm tracking-tight">
-          {!music.success
+          {!track.length
             ? "fetching... "
-            : music.playing
+            : track[2]
             ? "playing "
             : "last played "}
-          {music.success && (
+          {!!track.length && (
             <a
               className="underline "
-              href={`https://www.youtube.com/results?search_query=${music.name}`}
+              href={`https://www.youtube.com/results?search_query=${track[0]}`}
               target="_blank"
             >
-              {music.name.toLowerCase()}
+              {track[0].toLowerCase()}
             </a>
           )}
         </div>
-        <div className="text-sm tracking-tight">copyright - aditya</div>
+        <div className="text-sm tracking-tight">{count} online</div>
       </div>
     </div>
   );

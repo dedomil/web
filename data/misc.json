@@ -1,0 +1,17 @@
+[
+  {
+    "name": "yadav.id",
+    "url": "https://solana.fm/address/DuNKWq3a93BysBvKS2xR9hcJCVfmT494F2RiFM7jpt8b",
+    "description": "solana publickey"
+  },
+  {
+    "name": "resume",
+    "url": "https://api.dedomil.workers.dev/files/cv.pdf",
+    "description": "ready to work"
+  },
+  {
+    "name": "pgp key",
+    "url": "https://github.com/dedomil.gpg",
+    "description": "for unencrypted chats"
+  }
+]

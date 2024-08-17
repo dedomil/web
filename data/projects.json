@@ -1,0 +1,14 @@
+[
+  {
+    "name": "pulp",
+    "description": "a tool to share code seamlessly",
+    "url": "",
+    "repository": "https://github.com/dedomil/pulp"
+  },
+  {
+    "name": "instagram-notes",
+    "description": "instagram notes api wrapper",
+    "url": "",
+    "repository": "https://github.com/dedomil/instagram-notes"
+  }
+]
